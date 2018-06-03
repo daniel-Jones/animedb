@@ -2,9 +2,9 @@
 
 A personal anime tracker with statically generated web displays.
 
-Thought up during MAL's sudden and unusual hiatus in which they forced every user account to reset their password and denied access to their service for days.
+Thought up during MAL's sudden and unusual hiatus in which they forced every user account to reset their password and denied access to their service for days. As of writing this no explanation was given other than a potential exploit in their API. This really isn't good enough.
 
-I want a personalised way if displaying my anime history and progress without relying on a third party being online. 
+I want a personalised way of displaying my anime history and progress without relying on a third party being online. 
 
 [Live example](http://anime.danieljon.es)
 
