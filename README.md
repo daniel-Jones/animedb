@@ -6,6 +6,8 @@ Thought up during MAL's sudden and unusual hiatus in which they forced every use
 
 I want a personalised way if displaying my anime history and progress without relying on a third party being online. 
 
+[Live example](http://anime.danieljon.es)
+
 # project goals
 
 * single user, this is not a community tracker 
