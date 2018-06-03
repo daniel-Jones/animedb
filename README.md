@@ -14,13 +14,13 @@ I want a personalised way of displaying my anime history and progress without re
 * static webpages generated with scripts
 * no javascript, php or cgi (html and css web pages only)
 * usable on mobile and browser
-* display anime with information about it (name, year created, rating, genre, number of episodes etc))
+* display anime with information about it (name, year created, rating, genre, number of episodes etc)
 * display user rating, episodes watched, personal notes etc)
 * source information from MAL API (maybe others, I don't know of any) or allow the user to enter it manually
 * sqlite database to hold the information
 * provide easy to use cli tool to update/add anime, episodes, rating, notes etc
 * no servers, all edits to the database will be local
-* provide filters (highest/lowest score first, date created, watch status (watching, finished, on hold etc)
+* provide filters (highest/lowest score first, date created, watch status (watching, finished, on hold etc))
   * these will be generated html pages
 * script to import anime from MAL profiles (maybe others, again I don't know any personally)
   * possibly using exported XML data instead of API
