@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser();
     parser.add_argument("-d", "--database", type=str, action="store", dest="dbfile",
-            default="../userdb.db", required=True,
+            default="../userdb.db", required=False,
             help="sqlite3 database file containing anime information");
     parser.add_argument("-o", "--output", type=str, action="store", dest="outdir",
             default="../output/covers", required=False,
