@@ -130,14 +130,14 @@ def dbinsertanimedata(db, animelist):
                           anime.status,
                           anime.notes]);
     db.executemany("INSERT INTO anime ('animeid', " \
-                                   "'title', " \
-                                   "'episodes', " \
-                                   "'type', " \
-                                   "'watched', " \
-                                   "'score', " \
-                                   "'status', " \
-                                   "'notes') " \
-                                   "VALUES(?, ?, ?, ?, ?, ?, ?, ?)", animedata);
+                    "'title', " \
+                    "'episodes', " \
+                    "'type', " \
+                    "'watched', " \
+                    "'score', " \
+                    "'status', " \
+                    "'notes') " \
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?)", animedata);
 
 
 if __name__ == "__main__":
