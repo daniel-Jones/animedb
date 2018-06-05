@@ -44,6 +44,9 @@ def dbclose(db):
     db.close();
 
 def dbgetanimeids(db):
+    """
+    collect anime ids from the data base and return a list of them
+    """
     ids = [];
     c = db.cursor();
     for id in c.execute("SELECT animeid FROM anime;"):
@@ -51,6 +54,9 @@ def dbgetanimeids(db):
     return (ids);
 
 def createlinks(ids):
+    """
+    create MAL links from the ids and return a list of them
+    """
     links = [];
     for anime in ids:
         links.append("https://myanimelist.net/anime/{}".format(anime));
@@ -70,6 +76,9 @@ def scrapelinks(animelinks):
     return links;
 
 def getcoverimage(link, animeid):
+    """
+    download the cover image file and save it
+    """
     print("downloading {}".format(link));
     urllib.request.urlretrieve(link, "covers/{}.jpg".format(animeid))
 
