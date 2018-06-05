@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """
-malimporter.py is part of animedb. The purpose of this program is to import a MAL XML export into a database for use by animedb.
+malimporter.py is part of animedb.
+The purpose of this program is to import an anime profile export from MAL into a database for use by animedb.
 Copyright (C) 2018 Daniel Jones daniel@danieljon.es 
 
 This program is free software; you can redistribute it and/or
