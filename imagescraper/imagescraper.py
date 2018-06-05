@@ -75,12 +75,12 @@ def scrapelinks(animelinks):
             break;
     return links;
 
-def getcoverimage(link, animeid):
+def getcoverimage(link, directory, animeid):
     """
     download the cover image file and save it
     """
     print("downloading {}".format(link));
-    urllib.request.urlretrieve(link, "covers/{}.jpg".format(animeid))
+    urllib.request.urlretrieve(link, directory + "/{}.jpg".format(animeid))
 
 if __name__ == "__main__":
     """
@@ -93,6 +93,9 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--database", type=str, action="store", dest="dbfile",
             default="../userdb.db", required=True,
             help="sqlite3 database file containing anime information");
+    parser.add_argument("-o", "--output", type=str, action="store", dest="outdir",
+            default="../output/covers", required=False,
+            help="directory to save images");
     args = parser.parse_args();
 
     # if our database (file) doesn't exist, exit
@@ -113,7 +116,7 @@ if __name__ == "__main__":
     # download cover images
     x = 0;
     for link in coverlinks:
-        getcoverimage(link, animeids[x]);
+        getcoverimage(link, args.outdir, animeids[x]);
         x += 1;
 
     dbclose(db);
