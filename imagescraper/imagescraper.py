@@ -45,13 +45,13 @@ def dbclose(db):
 
 def dbgetanimeids(db):
     """
-    collect anime ids from the data base and return a list of them
+    collect anime ids from the database and return a list of them
     """
     ids = [];
     c = db.cursor();
     for id in c.execute("SELECT animeid FROM anime;"):
         ids.append(id[0]);
-    return (ids);
+    return ids;
 
 def createlinks(ids):
     """
@@ -87,6 +87,7 @@ if __name__ == "__main__":
     retrieve anime id's from the database
     construct urls to scrape
     scrape url for cover image link
+    download cover images and save them to a given or default directory
     """
 
     parser = argparse.ArgumentParser();

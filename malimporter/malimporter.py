@@ -193,7 +193,7 @@ if __name__ == "__main__":
     # commit and close db
     dbcommitclose(db);
 
-    print("MAL name: {}\n"\
+    print("MAL name: {}\n" \
             "MAL id: {}\n" \
             "total anime {}\n" \
             "total watching {}\n" \
