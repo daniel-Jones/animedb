@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta name="keywords" content="anime manga">
+<meta name="description" content="Anime tracking and rating for daniel_j">
+<meta name="author" content="Daniel Jones">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-control" content="public">
+<link rel="icon" type="image/png" href="https://danieljon.es/favicon.png">
+<title>Anime</title>
+<style>
+body
+{
+	margin-right: 5%;
+	margin-left: 5%;
+	background: #ffe6ff url(tile.png) repeat center center fixed;
+}
+
+.middle{text-align: center;}
+
+.anime
+{
+	font-size: 80%;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.anime img
+{
+	margin-right: 15px;
+	float: left;
+}
+
+.box 
+{
+	margin: 5px;
+	float: left;
+	overflow: hidden;
+}
+
+.content
+{
+	position: absolute;
+	background-color: #fafafa;
+	border-radius: 25px;
+	border: 2px;
+	box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+	width: 90%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body> 
+<div class="content">
+<div class="middle">
+<h2>Static anime progress</h2>
+filter: <br>
+<a href="/finished.html"><font color=green>finished</font></a> 
+<a href="/watching.html"><font color=red>watching</font></a> 
+<a href="/onhold.html"><font color=orange>on hold</font></a> <br>
+<a href="/highestfirst.html">highest score first</a> 
+<a href="/lowestfirst.html">lowest score first</a> 
+</div>
+
+{CONTENT}
+
+</div>
+
+</body>
+</html>
