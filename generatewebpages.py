@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import argparse;
 import sqlite3;
 import os;
+import re;
 from os import fdopen, remove;
 from shutil import copyfile;
 from tempfile import mkstemp;
@@ -42,13 +43,13 @@ class Anime:
     def __init__(self, animeobj):
         self.dbpos = animeobj[0];
         self.animeid = animeobj[1];
-        self.title = animeobj[2];
+        self.title = animeobj[2].replace("\"", "&quot;");
         self.episodes = animeobj[3];
         self.type = animeobj[4];
         self.watched = animeobj[5];
         self.score = animeobj[6];
         self.status = animeobj[7];
-        self.notes = animeobj[8];
+        self.notes = str(animeobj[8]).replace("\"", "&quot;");
         self.output = ""; # our final html string
 
     def setstatuscolor(self, status):
@@ -92,7 +93,7 @@ def replacestringinfile(file_path, string, substr):
     with fdopen(fh, "w") as new_file:
         with open(file_path) as old_file:
             for line in old_file:
-                new_file.write(str(line.replace(string, substr).encode("utf-8")));
+                new_file.write(line.replace(string, substr));
     remove(file_path);
     move(abs_path, file_path);
 
@@ -101,33 +102,33 @@ def replacestring(string, substr, replacement):
 
 def insertanimedata(anime):
     tmp = animetemplate;
-    tmp = replacestring(tmp, "{ANIME_UNDERLINED_TITLE}", anime.title.replace(" ", "_"));
+    tmp = replacestring(tmp, "{ANIME_UNDERLINED_TITLE}", re.sub(r'[^\x00-\x7f]',r'', anime.title.replace(" ", "_")));
     tmp = replacestring(tmp, "{ANIME_ID}", str(anime.animeid));
-    tmp = replacestring(tmp, "{ANIME_TITLE}", anime.title);
+    tmp = replacestring(tmp, "{ANIME_TITLE}", re.sub(r'[^\x00-\x7f]',r'', anime.title));
     tmp = replacestring(tmp, "{TOTAL_EPISODES}", str(anime.episodes));
     tmp = replacestring(tmp, "{EPISODES_WATCHED}", str(anime.watched));
     tmp = replacestring(tmp, "{WATCH_STATUS_COLOR}", anime.statuscolor);
     tmp = replacestring(tmp, "{WATCH_STATUS}", anime.status);
     tmp = replacestring(tmp, "{RATING}", str(anime.score));
-    tmp = replacestring(tmp, "{NOTES}", str(anime.notes));
+    tmp = replacestring(tmp, "{NOTES}", re.sub(r'[^\x00-\x7f]',r'', str(anime.notes)));
     anime.output = tmp;
 
 # this template is used for every anime we display
 animetemplate = (
-        "<div class=\"box\">"
-        "<div class=\"anime\">"
-        "<div id=\"{ANIME_UNDERLINED_TITLE}\">"
-        "<img width=40% height=40% src=\"covers/{ANIME_ID}.jpg\" alt=\"{ANIME_TITLE} cover\">"
-        "<div class=\"viewing\">"
-        "{ANIME_TITLE} <br>"
-        "{TOTAL_EPISODES} episodes ({EPISODES_WATCHED} watched) <br>"
-        "status: <font color=\"{WATCH_STATUS_COLOR}\">{WATCH_STATUS}</font> <br>"
-        "rating: {RATING}/10 <br>"
-        "notes: {NOTES}<br>"
-        "</div>"
-        "</div>"
-        "</div>"
-        "</div>");
+        "<div class=\"box\">\n"
+        "<div class=\"anime\">\n"
+        "<div id=\"{ANIME_UNDERLINED_TITLE}\">\n"
+        "<img width=96 height=137 src=\"covers/{ANIME_ID}.jpg\" alt=\"{ANIME_TITLE} cover\">\n"
+        "<div class=\"viewing\">\n"
+        "{ANIME_TITLE} <br>\n"
+        "{TOTAL_EPISODES} episodes ({EPISODES_WATCHED} watched) <br>\n"
+        "status: <font color=\"{WATCH_STATUS_COLOR}\">{WATCH_STATUS}</font> <br>\n"
+        "rating: {RATING}/10 <br>\n"
+        "notes: {NOTES}<br>\n"
+        "</div>\n"
+        "</div>\n"
+        "</div>\n"
+        "</div>\n");
 
 if __name__ == "__main__":
     """
